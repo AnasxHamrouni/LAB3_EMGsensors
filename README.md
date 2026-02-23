@@ -11,17 +11,15 @@ This repository contains scripts and Arduino firmware used to run a lab experime
 - `readEMGserial.ino` — Arduino sketch for EMG acquisition and envelope extraction.
 - `run_emg_motor.py` — Main script: EMG (serial or CSV) → motor control + logging.
 - `processData.py` — Plot logged variables from `run_emg_log.csv`.
-- `run_and_log.py` — Alternative script for force-sensor-driven motor control (separate setup).
 - `emg_log.csv`, `emg_logFirst.csv`, `emg_logSecondAndrey.csv` — Example EMG recordings.
 - `run_emg_log.csv` — Example output log from motor run.
 
-## Experiment setup
+## Experiment setup (details in the report)
 
 ### Hardware
 
 - Arduino-compatible board connected to an EMG sensor output (analog input `A0` in the sketch).
 - GYEMS motor connected through CAN interface (`can0` in Python scripts).
-- Host computer (this project was developed on macOS; CAN setup may require Linux-specific steps depending on your adapter/driver).
 
 ### Software
 
@@ -146,16 +144,6 @@ The plot includes (if columns exist):
 - Motor angle (`q_deg`)
 - Motor speed (`dq_deg_s`)
 - Current command (`I_cmd_A`)
-
-## Optional: force-sensor experiment
-
-`run_and_log.py` is a separate control pipeline using force sensor ADC input from serial.
-
-Default serial port in that script is `/dev/ttyUSB0`. Update it if needed before running:
-
-```bash
-python run_and_log.py
-```
 
 ## Important parameters to tune
 
